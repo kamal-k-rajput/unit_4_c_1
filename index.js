@@ -1,5 +1,4 @@
 const express = require("express");
-
 const app = express();
 
 app.use(logger);
@@ -14,15 +13,13 @@ app.get("/libraries", checkPermission("librarian"), (req, res) => {
   res.send("this is libraries page");
   console.log(req.path);
 });
-app.get("/author", checkPermission("author"), (req, res) => {
+app.get("/authors", checkPermission("author"), (req, res) => {
   res.send("this is authors page");
   console.log(req.path);
 });
 
 function logger(req, res, next) {
-  console.log("before the logger");
   next();
-  console.log("after the logger");
 }
 function checkPermission(data) {
   return function logger1(req, res, next) {
